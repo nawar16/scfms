@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StockController extends Controller
+class RegulationsAndDecisionsController extends Controller
 {
     public function index()
     {
-        $stock = \App\Models\Page::where('id', '910')->first();
-        $stock['sub_pages'] = $stock->all_sub_pages();
-        if($stock)
+        $regulation = \App\Models\Page::where('id', '919')->first();
+        $regulation['sub_pages'] = $regulation->all_sub_pages();
+        if($regulation)
         {
             return response()->json([
                 'status' => 'success',
-                'data' => $stock
+                'data' => $regulation
             ]);
         } else{
             return response()->json([

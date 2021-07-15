@@ -18,14 +18,30 @@ class Page extends Model
         'organiser', 'is_right', 'src_1_en', 'violation_type_en', 'penalty_en', 'activity_of_en', 'reason_for_en',
         'employees_en' 	
     ];
-    protected $appends = ['photo'];
+    protected $appends = ['photo', 'photo_2', 'photo_3', 'pdf', 'pdf_en'];
 
 
     public function getPhotoAttribute()
     {
         return 'http://www.scfms.sy/pages/photos/'.$this->src;
     }
-    
+    public function getPhoto2Attribute()
+    {
+        return 'http://www.scfms.sy/pages/photos/'.$this->src_2;
+    }
+    public function getPhoto3Attribute()
+    {
+        return 'http://www.scfms.sy/pages/photos/'.$this->src_3;
+    }
+    public function getPdfAttribute()
+    {
+        return 'http://www.scfms.sy/pages/photos/'.$this->src_1;
+    }
+    public function getPdfEnAttribute()
+    {
+        return 'http://www.scfms.sy/pages/photos/'.$this->src_1_en;
+    }
+
     //////////////////////////////////////////////////////////////////////////////////
     public function parent ()
     {
