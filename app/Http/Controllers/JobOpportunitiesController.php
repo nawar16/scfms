@@ -9,7 +9,6 @@ class JobOpportunitiesController extends Controller
     public function index()
     {
         $opportunity = \App\Models\Page::where('id', '971')->first();
-        $opportunity['sub_pages'] = $opportunity->all_sub_pages();
         if($opportunity)
         {
             return response()->json([

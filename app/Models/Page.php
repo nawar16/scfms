@@ -18,7 +18,7 @@ class Page extends Model
         'organiser', 'is_right', 'src_1_en', 'violation_type_en', 'penalty_en', 'activity_of_en', 'reason_for_en',
         'employees_en' 	
     ];
-    protected $appends = ['photo', 'photo_2', 'photo_3', 'pdf', 'pdf_en'];
+    protected $appends = ['photo', 'photo_2', 'photo_3', 'pdf', 'pdf_en' , 'pages'];
 
 
     public function getPhotoAttribute()
@@ -51,14 +51,13 @@ class Page extends Model
     {
         return $this->hasMany(Page::class,'parent_id','id');
     }
-    public function all_sub_pages ()
+    public function getPagesAttribute()
     {
         $pages = new Collection();
         foreach ($this->sub_pages as $page) {
             $pages->push($page);
-            $pages = $pages->merge($page->all_sub_pages());
+            $pages = $pages->merge($page->getPagesAttribute());
         }
-
         return $pages;
     }
 

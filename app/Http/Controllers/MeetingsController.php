@@ -8,13 +8,12 @@ class MeetingsController extends Controller
 {
     public function index()
     {
-        $regulation = \App\Models\Page::where('id', '3695')->first();
-        $regulation['sub_pages'] = $regulation->all_sub_pages();
-        if($regulation)
+        $meeting = \App\Models\Page::where('id', '3695')->first();
+        if($meeting)
         {
             return response()->json([
                 'status' => 'success',
-                'data' => $regulation
+                'data' => $meeting
             ]);
         } else{
             return response()->json([

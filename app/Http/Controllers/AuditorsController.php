@@ -8,13 +8,12 @@ class AuditorsController extends Controller
 {
     public function index()
     {
-        $regulation = \App\Models\Page::where('id', '953')->first();
-        $regulation['sub_pages'] = $regulation->all_sub_pages();
-        if($regulation)
+        $auditor = \App\Models\Page::where('id', '953')->first();
+        if($auditor)
         {
             return response()->json([
                 'status' => 'success',
-                'data' => $regulation
+                'data' => $auditor
             ]);
         } else{
             return response()->json([

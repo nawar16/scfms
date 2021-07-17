@@ -9,7 +9,6 @@ class BrokerageCompaniesController extends Controller
     public function index()
     {
         $company = \App\Models\Page::where('id', '910')->first();
-        $company['sub_pages'] = $company->all_sub_pages();
         if($company)
         {
             return response()->json([

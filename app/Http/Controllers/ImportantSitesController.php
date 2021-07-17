@@ -9,7 +9,6 @@ class ImportantSitesController extends Controller
     public function index()
     {
         $sites = \App\Models\Page::where('id', '972')->first();
-        $sites['sub_pages'] = $sites->all_sub_pages();
         if($sites)
         {
             return response()->json([

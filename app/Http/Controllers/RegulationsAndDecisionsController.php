@@ -9,7 +9,6 @@ class RegulationsAndDecisionsController extends Controller
     public function index()
     {
         $regulation = \App\Models\Page::where('id', '919')->first();
-        $regulation['sub_pages'] = $regulation->all_sub_pages();
         if($regulation)
         {
             return response()->json([

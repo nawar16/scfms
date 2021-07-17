@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AwarenessProspectusController extends Controller
+class CompanyNewsController extends Controller
 {
     public function index()
     {
-        $awareness = \App\Models\Page::where('id', '990')->first();
-        if($awareness)
+        $news = \App\Models\Page::where('id', '894')->first();
+        if($news)
         {
             return response()->json([
                 'status' => 'success',
-                'data' => $awareness
+                'data' => $news
             ]);
         } else{
             return response()->json([

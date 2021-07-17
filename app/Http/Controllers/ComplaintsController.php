@@ -9,7 +9,6 @@ class ComplaintsController extends Controller
     public function index()
     {
         $complaint = \App\Models\Page::where('id', '970')->first();
-        $complaint['sub_pages'] = $complaint->all_sub_pages();
         if($complaint)
         {
             return response()->json([

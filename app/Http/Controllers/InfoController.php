@@ -8,7 +8,7 @@ class InfoController extends Controller
 {
     public function index()
     {
-        $info = \App\Models\Info::paginate(10);
+        $info = \App\Models\Page::where('id', '9273')->first();
         if($info)
         {
             return response()->json([

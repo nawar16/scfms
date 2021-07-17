@@ -8,13 +8,12 @@ class JointStockCompaniesController extends Controller
 {
     public function index()
     {
-        $regulation = \App\Models\Page::where('id', '899')->first();
-        $regulation['sub_pages'] = $regulation->all_sub_pages();
-        if($regulation)
+        $stock = \App\Models\Page::where('id', '899')->first();
+        if($stock)
         {
             return response()->json([
                 'status' => 'success',
-                'data' => $regulation
+                'data' => $stock
             ]);
         } else{
             return response()->json([

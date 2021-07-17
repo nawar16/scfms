@@ -9,7 +9,6 @@ class NewsController extends Controller
     public function index()
     {
         $news = \App\Models\Page::where('id', '73')->first();
-        $news['sub_pages'] = $news->all_sub_pages();
         if($news)
         {
             return response()->json([

@@ -8,13 +8,12 @@ class DisclosuresController extends Controller
 {
     public function index()
     {
-        $regulation = \App\Models\Page::where('id', '901')->first();
-        $regulation['sub_pages'] = $regulation->all_sub_pages();
-        if($regulation)
+        $disclosure = \App\Models\Page::where('id', '901')->first();
+        if($disclosure)
         {
             return response()->json([
                 'status' => 'success',
-                'data' => $regulation
+                'data' => $disclosure
             ]);
         } else{
             return response()->json([
