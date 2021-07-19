@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 
-class AuditorsController extends Controller
+class ManualsAndFormsController extends Controller
 {
     public function index()
     {
         try {
-            $auditor = Page::where('parent_id', '953')->paginate(10);
+            $form = Page::where('parent_id', '1010')->paginate(10);
             return response()->json([
                 'status' => 'success',
-                'data' => $auditor
+                'data' => $form
             ]);
         } catch(\Exception $ex){
             return response()->json([
@@ -24,3 +24,4 @@ class AuditorsController extends Controller
 
     }
 }
+

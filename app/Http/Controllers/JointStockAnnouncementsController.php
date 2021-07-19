@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 
-class AuditorsController extends Controller
+class JointStockAnnouncementsController extends Controller
 {
     public function index()
     {
         try {
-            $auditor = Page::where('parent_id', '953')->paginate(10);
+            $announcement = Page::where('parent_id', '7063')->paginate(10);
             return response()->json([
                 'status' => 'success',
-                'data' => $auditor
+                'data' => $announcement
             ]);
         } catch(\Exception $ex){
             return response()->json([

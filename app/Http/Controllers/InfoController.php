@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class InfoController extends Controller
 {
     public function index()
     {
-        $info = \App\Models\Page::where('id', '9273')->first();
-        if($info)
-        {
+        try {
+            $info = Page::where('parent_id', '9273')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $info
             ]);
-        } else{
+        } catch(\Exception $ex){
             return response()->json([
                 'status' => 'error',
                 'message' => 'something error'

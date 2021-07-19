@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 
-class AuditorsController extends Controller
+class AnnualReportController extends Controller
 {
     public function index()
     {
         try {
-            $auditor = Page::where('parent_id', '953')->paginate(10);
+            $report = Page::where('parent_id', '3984')->where('Active', '1')
+            ->orderBy('year', 'DESC')->orderBy('publish_date', 'DESC')
+            ->orderBy('the_order', 'DESC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
-                'data' => $auditor
+                'data' => $report
             ]);
         } catch(\Exception $ex){
             return response()->json([

@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class JointStockCompaniesController extends Controller
 {
     public function index()
     {
-        $stock = \App\Models\Page::where('id', '899')->first();
-        if($stock)
-        {
+        try {
+            $stock = Page::where('parent_id', '899')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $stock
             ]);
-        } else{
+        } catch(\Exception $ex){
             return response()->json([
                 'status' => 'error',
                 'message' => 'something error'

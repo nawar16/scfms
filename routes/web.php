@@ -19,9 +19,16 @@ Route::get('/', function () {
 
 
 Route::resource('about', 'AboutController');
+Route::resource('contact', 'ContactController');
 Route::resource('news', 'NewsController');
+//التشريعات والقوانين
+Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
 //شركات الوساطة
 Route::resource('brokerage_companies', 'BrokerageCompaniesController');
+// الشركات المساهمة
+Route::resource('joint_stock_companies', 'JointStockCompaniesController');
+//مدققو الحسابات
+Route::resource('auditors', 'AuditorsController');
 //معلومة 
 Route::resource('info', 'InfoController');
 //مواقع هامة
@@ -30,12 +37,17 @@ Route::resource('important_sites', 'ImportantSitesController');
 Route::resource('job_opportunities', 'JobOpportunitiesController');
 //الشكاوى
 Route::resource('complaints', 'ComplaintsController');
-//التشريعات والقوانين
-Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
-// الشركات المساهمة
-Route::resource('joint_stock_companies', 'JointStockCompaniesController');
-//مدققو الحسابات
-Route::resource('auditors', 'AuditorsController');
+//اعلانات الشركات المساهمة
+Route::resource('joint_stock_announcements', 'JointStockAnnouncementsController');
+//التوعية
+Route::resource('awareness', 'AwarenessController');
+//التقرير السنوي
+Route::resource('annual_report', 'AnnualReportController');
+//أدلة إرشادية واستمارات
+Route::resource('manuals_and_forms', 'ManualsAndFormsController');
+//المحكومون
+Route::resource('arbitrators', 'ArbitratorsController');
+
 //اجتماعات الهيئة العامة
 Route::resource('meetings', 'MeetingsController');
 //الشركات و إفصاحاتها
@@ -45,4 +57,4 @@ Route::resource('awareness_prospectus', 'AwarenessProspectusController');
 //اخبار الشركات
 Route::resource('company_news', 'CompanyNewsController');
 //الرئيسية
-Route::resource('home', 'HomeController');
+//Route::resource('home', 'HomeController');

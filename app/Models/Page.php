@@ -18,28 +18,33 @@ class Page extends Model
         'organiser', 'is_right', 'src_1_en', 'violation_type_en', 'penalty_en', 'activity_of_en', 'reason_for_en',
         'employees_en' 	
     ];
-    protected $appends = ['photo', 'photo_2', 'photo_3', 'pdf', 'pdf_en' , 'pages'];
+    protected $appends = ['photo', 'photo_2', 'photo_3', 'pdf', 'pdf_en', 'pages'];
 
 
     public function getPhotoAttribute()
     {
-        return 'http://www.scfms.sy/pages/photos/'.$this->src;
+        return $this->src != "" &&  !is_null($this->src) 
+        ? 'http://www.scfms.sy/pages/photos/'.$this->src : null;
     }
     public function getPhoto2Attribute()
     {
-        return 'http://www.scfms.sy/pages/photos/'.$this->src_2;
+        return $this->src_2 != "" &&  !is_null($this->src_2)
+        ? 'http://www.scfms.sy/pages/photos/'.$this->src_2 : null;
     }
     public function getPhoto3Attribute()
     {
-        return 'http://www.scfms.sy/pages/photos/'.$this->src_3;
+        return  $this->src_3 != "" &&  !is_null($this->src_3)
+        ? 'http://www.scfms.sy/pages/photos/'.$this->src_3 : null;
     }
     public function getPdfAttribute()
     {
-        return 'http://www.scfms.sy/pages/photos/'.$this->src_1;
+        return  $this->src_1 != "" &&  !is_null($this->src_1)
+        ? 'http://www.scfms.sy/pages/photos/'.$this->src_1 : null;
     }
     public function getPdfEnAttribute()
     {
-        return 'http://www.scfms.sy/pages/photos/'.$this->src_1_en;
+        return  $this->src_1_en != "" &&  !is_null($this->src_1_en)
+        ? 'http://www.scfms.sy/pages/photos/'.$this->src_1_en : null;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -53,12 +58,18 @@ class Page extends Model
     }
     public function getPagesAttribute()
     {
+        return $this->sub_pages()->paginate(1);
+    }
+    ////////////////--- INFINITY DEPTH ---////////////////
+    /*public function getPagesAttribute()
+    {
         $pages = new Collection();
-        foreach ($this->sub_pages as $page) {
+        foreach ($this->pages_paginated as $page) {
             $pages->push($page);
             $pages = $pages->merge($page->getPagesAttribute());
         }
         return $pages;
-    }
+    }*/
+
 
 }

@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class RegulationsAndDecisionsController extends Controller
 {
     public function index()
     {
-        $regulation = \App\Models\Page::where('id', '919')->first();
-        if($regulation)
-        {
+        try {
+            $regulation = Page::where('parent_id', '919')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $regulation
             ]);
-        } else{
+        } catch(\Exception $ex){
             return response()->json([
                 'status' => 'error',
                 'message' => 'something error'
