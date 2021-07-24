@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/page/{id}', 'HomeController@show');
 Route::resource('setting', 'SettingController');
 Route::resource('about', 'AboutController');
 Route::resource('contact', 'ContactController');
@@ -59,4 +60,4 @@ Route::resource('company_news', 'CompanyNewsController');
 //العلاقات الدولية
 Route::resource('international_relations','InternationalRelationsController');
 //الرئيسية
-Route::resource('home', 'HomeController');
+//Route::resource('home', 'HomeController');

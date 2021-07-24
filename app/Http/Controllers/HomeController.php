@@ -59,4 +59,22 @@ class HomeController extends Controller
             ]);
         }
     }
+    public function show($id)
+    {
+        try {
+            $page = Page::findOrFail($id);
+            return response()->json([
+                'status' => 'success',
+                'data' => $page
+            ]);
+        } catch(\Exception $ex){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'something error'
+            ]);
+        }
+
+    }
+
+
 }
