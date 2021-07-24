@@ -56,5 +56,9 @@ Route::resource('disclosures', 'DisclosuresController');
 Route::resource('awareness_prospectus', 'AwarenessProspectusController');
 //اخبار الشركات
 Route::resource('company_news', 'CompanyNewsController');
+//العلاقات الدولية
+Route::resource('international_relations','InternationalRelationsController');
+//القائمة 
+Route::resource('menu', 'MenuController');
 //الرئيسية
 //Route::resource('home', 'HomeController');
