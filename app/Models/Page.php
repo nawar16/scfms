@@ -58,7 +58,7 @@ class Page extends Model
     }
     public function getPagesAttribute()
     {
-        return $this->sub_pages()->paginate(1);
+        return $this->sub_pages()->paginate(10);
     }
     ////////////////--- INFINITY DEPTH ---////////////////
     /*public function getPagesAttribute()
