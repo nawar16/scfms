@@ -13,15 +13,17 @@ class SettingController extends Controller
             $copy_right =  " Powered by <a href=\"#\" target=\"_blank\">SWT</a> Web Service Provider - all rights reserved ".date('Y');
             $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])->get();
             //$menu->makeHidden(['pages']);
-            //$have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
+            $have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
             foreach($menu as $hsm)
             {
-                if($hsm->pages)
+                if($have_sub_menu->contains($hsm))
                 {
                     $sub_pages = Page::where('parent_id',$hsm->id)->get(['id', 'name', 'name_en']);
                     foreach($sub_pages as $sub)
                     $sub->setRelation('pages', null);
                     $hsm['sub_menu'] = $sub_pages;
+                    $hsm->setRelation('pages', null);
+                } else {
                     $hsm->setRelation('pages', null);
                 }
             }
