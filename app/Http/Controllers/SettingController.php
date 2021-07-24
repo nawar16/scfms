@@ -27,9 +27,12 @@ class SettingController extends Controller
                     $hsm->setRelation('pages', null);
                 }
             }
+            $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
+            ->orderBy('id', 'DESC')->first();
             return response()->json([
                 'status' => 'success',
                 'menu' => $menu,
+                'info' => $info,
                 'copy_right' => $copy_right
             ]);
         } catch(\Exception $ex){
