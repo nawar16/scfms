@@ -10,7 +10,7 @@ class MeetingsController extends Controller
     public function index()
     {
         try {
-            $meeting = Page::where('parent_id', '3695')->paginate(10);
+            $meeting = Page::where('parent_id', '3695')->orderBy('e_date', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $meeting

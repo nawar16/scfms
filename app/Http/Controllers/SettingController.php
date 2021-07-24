@@ -11,7 +11,7 @@ class SettingController extends Controller
     {
         try {
             $copy_right =  " Powered by <a href=\"#\" target=\"_blank\">SWT</a> Web Service Provider - all rights reserved ".date('Y');
-            $menu = Page::where('parent_id',0)->whereNotIn('id', [9282, 3695])
+            $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             $have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
             foreach($menu as $hsm)
