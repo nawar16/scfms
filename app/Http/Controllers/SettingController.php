@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Helpers;
 
 class SettingController extends Controller
 {
@@ -33,6 +34,8 @@ class SettingController extends Controller
                 'status' => 'success',
                 'menu' => $menu,
                 'info' => $info,
+                'date_en' => \Carbon\Carbon::now()->format('D d F Y'),
+                'date_ar' => get_html_date_time(strtotime(date('Y-m-d'))),
                 'copy_right' => $copy_right
             ]);
         } catch(\Exception $ex){
