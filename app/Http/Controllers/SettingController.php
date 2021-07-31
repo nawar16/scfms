@@ -10,7 +10,7 @@ use App\Models\Device;
 class SettingController extends Controller
 {
     protected $version_name = "1.0";
-    protected $version_code = 2;
+    protected $version_code = 1;
     protected $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
     
     public function register_device(Request $request)
