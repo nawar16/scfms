@@ -9,6 +9,10 @@ use App\Models\Device;
 
 class SettingController extends Controller
 {
+    protected $version_name = "1.0";
+    protected $version_code = 1;
+    protected $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
+    
     public function register_device(Request $request)
     {
         $ip = request('ip');
@@ -59,7 +63,6 @@ class SettingController extends Controller
                     'message' => 'failed store device data'
                 ]);
             }
-            $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
             $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             $have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
@@ -84,9 +87,9 @@ class SettingController extends Controller
                 'info' => $info,
                 'date_en' => \Carbon\Carbon::now()->format('D d F Y'),
                 'date_ar' => get_html_date_time(strtotime(date('Y-m-d'))),
-                'copy_right' => $copy_right,
-                'version_name' => '1.0',
-                'version_code' => 1
+                'copy_right' => $this->copy_right,
+                'version_name' => $this->version_name,
+                'version_code' => $this->version_code
             ]);
         } catch(\Exception $ex){
             return response()->json([
