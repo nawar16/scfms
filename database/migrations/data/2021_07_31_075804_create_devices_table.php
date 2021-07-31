@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
         Schema::connection('mysql2')->create('devices', function (Blueprint $table) {
             $table->id();
             $table->string('ip')->nullable();
-            $table->string('device_id')->nullable();
+            $table->string('device_id')->unique();
             $table->string('device_name')->nullable();
             $table->string('device_company')->nullable();
             $table->string('android_version')->nullable();
