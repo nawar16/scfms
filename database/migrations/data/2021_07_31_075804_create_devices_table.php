@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMobileDataTable extends Migration
+class CreateDevicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMobileDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('mobile_data', function (Blueprint $table) {
+        Schema::connection('mysql2')->create('devices', function (Blueprint $table) {
             $table->id();
             $table->string('ip')->nullable();
             $table->string('device_id')->nullable();
@@ -38,6 +38,6 @@ class CreateMobileDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mobile_data');
+        Schema::connection('mysql2')->dropIfExists('users');
     }
 }

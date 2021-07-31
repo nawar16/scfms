@@ -5,26 +5,58 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Helpers;
-use App\Models\MobileData;
+use App\Models\Device;
 
 class SettingController extends Controller
 {
+    public function register_device(Request $request)
+    {
+        $ip = request('ip');
+        $device_id = request('device_id');
+        $device_name = request('device_name');
+        $device_company = request('device_company');
+        $android_version = request('android_version');
+        $token  = request('token');
+
+        $check = Device::where('device_id',$device_id)->first();
+        $data = [
+            'ip' => $ip,
+            'device_id' => $device_id,
+            'device_name' => $device_name,
+            'device_company' => $device_company,
+            'android_version' => $android_version,
+            'token' => $token,
+        ];
+        if($check){
+            $insert = $check->update($data);
+            $msg = 'Update '.$device_id;
+        }else{
+            $insert = Device::create($data);
+            $msg = 'Create '.$device_id;
+        }
+
+        if ($insert) {
+            $response = [
+                'status' => true,
+                'msg' => $msg,
+            ];
+        } else {
+            $response = [
+                'status' => false,
+                'msg' => 'خطأ ',
+            ];
+        }
+        return $response;
+    }
     public function setting(Request $request)
     {
         try {
-            $md = MobileData::create([
-                'ip'=> $request->ip,
-                'device_id' => $request->device_id,
-                'device_name' => $request->device_name,
-                'device_company' => $request->device_company,
-                'android_version' => $request->android_version,
-                'token' => $request->token
-            ]);
-            if(!$md)
+            $res = $this->register_device($request);
+            if($res['status'] == false)
             {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'failed store mobile info'
+                    'message' => 'failed store device data'
                 ]);
             }
             $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
