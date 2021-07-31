@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+//php artisan migrate --database="mysql2" --path="database/migrations/data"
 class CreateDevicesTable extends Migration
 {
     /**
