@@ -5,12 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Helpers;
+use App\Models\MobileData;
 
 class SettingController extends Controller
 {
-    public function index()
+    public function setting(Request $request)
     {
         try {
+            //dd('hi');
+            MobileData::create([
+                'ip'=> $request->ip,
+                'device_id' => $request->device_id,
+                'device_name' => $request->device_name,
+                'device_company' => $request->device_company,
+                'android_version' => $request->android_version,
+                'token' => $request->token
+            ]);
             $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
             $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
@@ -36,7 +46,9 @@ class SettingController extends Controller
                 'info' => $info,
                 'date_en' => \Carbon\Carbon::now()->format('D d F Y'),
                 'date_ar' => get_html_date_time(strtotime(date('Y-m-d'))),
-                'copy_right' => $copy_right
+                'copy_right' => $copy_right,
+                'version_name' => '1.0',
+                'version_code' => 1
             ]);
         } catch(\Exception $ex){
             return response()->json([

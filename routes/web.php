@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/page/{id}', 'HomeController@show');
-Route::resource('setting', 'SettingController');
+Route::post('setting', 'SettingController@setting');
 Route::resource('about', 'AboutController');
 Route::resource('contact', 'ContactController');
 Route::resource('news', 'NewsController');
