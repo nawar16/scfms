@@ -12,8 +12,7 @@ class SettingController extends Controller
     public function setting(Request $request)
     {
         try {
-            //dd('hi');
-            MobileData::create([
+            $md = MobileData::create([
                 'ip'=> $request->ip,
                 'device_id' => $request->device_id,
                 'device_name' => $request->device_name,
@@ -21,6 +20,13 @@ class SettingController extends Controller
                 'android_version' => $request->android_version,
                 'token' => $request->token
             ]);
+            if(!$md)
+            {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'failed store mobile info'
+                ]);
+            }
             $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
             $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
