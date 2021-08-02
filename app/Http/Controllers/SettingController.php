@@ -11,7 +11,11 @@ class SettingController extends Controller
 {
     protected $version_name = "1.0";
     protected $version_code = 1;
-    protected $copy_right = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
+    protected $copyright_txt = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
+    protected $copyright_link = "https://syrianmonster.com/";
+    protected $facebook_url = "https://www.facebook.com/scfms.sy/";
+    protected $instgram_url = "https://www.instagram.com/scfms.sy/";
+
     
     public function register_device(Request $request)
     {
@@ -90,9 +94,12 @@ class SettingController extends Controller
                 'info' => $info,
                 'date_en' => \Carbon\Carbon::now()->format('D d F Y'),
                 'date_ar' => get_html_date_time(strtotime(date('Y-m-d'))),
-                'copy_right' => $this->copy_right,
+                'copyright_txt' => $this->copyright_txt,
+                'copyright_link' => $this->copyright_link,
                 'version_name' => $this->version_name,
-                'version_code' => $this->version_code
+                'version_code' => $this->version_code,
+                'facebook_url' => $this->facebook_url,
+                'instgram_url' => $this->instgram_url 
             ]);
         } catch(\Exception $ex){
             return response()->json([
