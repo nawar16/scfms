@@ -14,7 +14,7 @@ class SettingController extends Controller
     protected $copyright_txt = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
     protected $copyright_link = "https://syrianmonster.com/";
     protected $facebook_url = "https://www.facebook.com/scfms.sy/";
-    protected $instgram_url = "https://www.instagram.com/scfms.sy/";
+    protected $instagram_url = "https://www.instagram.com/scfms.sy/";
 
     
     public function register_device(Request $request)
@@ -99,7 +99,7 @@ class SettingController extends Controller
                 'version_name' => $this->version_name,
                 'version_code' => $this->version_code,
                 'facebook_url' => $this->facebook_url,
-                'instgram_url' => $this->instgram_url 
+                'instagram_url' => $this->instagram_url 
             ]);
         } catch(\Exception $ex){
             return response()->json([
