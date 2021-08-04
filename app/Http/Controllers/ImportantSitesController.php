@@ -11,6 +11,9 @@ class ImportantSitesController extends Controller
     {
         try {
             $sites = Page::where('parent_id', '972')->get();
+            $sites['name_en'] = 'Important Sites';
+            $sites['name'] = 'مواقع هامة  ';
+            $sites['id'] = 972;
             return response()->json([
                 'status' => 'success',
                 'data' => $sites

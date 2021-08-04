@@ -88,6 +88,9 @@ class SettingController extends Controller
             }
             $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->first();
+            $menu['name_en'] = 'setting';
+            $menu['name'] = 'اعدادات التطبيق';
+            $menu['id'] = 0;
             return response()->json([
                 'status' => 'success',
                 'menu' => $menu,

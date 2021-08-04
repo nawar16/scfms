@@ -11,6 +11,9 @@ class CompanyNewsController extends Controller
     {
         try {
             $news = Page::where('parent_id', '894')->paginate(10);
+            $news['name_en'] = 'Company News';
+            $news['name'] = 'اخبار الشركات   ';
+            $news['id'] = 894;
             return response()->json([
                 'status' => 'success',
                 'data' => $news

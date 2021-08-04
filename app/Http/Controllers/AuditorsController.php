@@ -11,6 +11,9 @@ class AuditorsController extends Controller
     {
         try {
             $auditor = Page::where('parent_id', '953')->paginate(10);
+            $auditor['name_en'] = 'Auditors';
+            $auditor['name'] = 'مدققو الحسابات ';
+            $auditor['id'] = 953;
             return response()->json([
                 'status' => 'success',
                 'data' => $auditor

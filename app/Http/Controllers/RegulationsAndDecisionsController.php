@@ -11,6 +11,9 @@ class RegulationsAndDecisionsController extends Controller
     {
         try {
             $regulation = Page::where('parent_id', '919')->get();
+            $regulation['name_en'] = 'Regulations And Decisions';
+            $regulation['name'] = 'التشريعات والقرارات  ';
+            $regulation['id'] = 919;
             return response()->json([
                 'status' => 'success',
                 'data' => $regulation
