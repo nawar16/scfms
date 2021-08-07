@@ -16,7 +16,7 @@ class SettingController extends Controller
     protected $facebook_url = "https://www.facebook.com/scfms.sy/";
     protected $instagram_url = "https://www.instagram.com/scfms.sy/";
 
-    
+
     public function register_device(Request $request)
     {
         $validate = $this->validate($request, [
@@ -72,6 +72,8 @@ class SettingController extends Controller
             }
             $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
+            //return (object)array_values((array)$menu);
+            //return json_decode(json_encode($menu), true);
             $have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
             foreach($menu as $hsm)
             {
@@ -79,7 +81,7 @@ class SettingController extends Controller
                 {
                     $sub_pages = Page::where('parent_id',$hsm->id)->get(['id', 'name', 'name_en']);
                     foreach($sub_pages as $sub)
-                    $sub->setRelation('pages', null);
+                        $sub->setRelation('pages', null);
                     $hsm['sub_menu'] = $sub_pages;
                     $hsm->setRelation('pages', null);
                 } else {
@@ -88,9 +90,11 @@ class SettingController extends Controller
             }
             $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->first();
-            $menu['name_en'] = 'setting';
-            $menu['name'] = 'اعدادات التطبيق';
-            $menu['id'] = 0;
+            $menu->push([
+                 'name_en' => 'setting',
+                 'name' => 'اعدادات التطبيق',
+                 'id'=>0
+            ]);
             return response()->json([
                 'status' => 'success',
                 'menu' => $menu,
@@ -102,7 +106,7 @@ class SettingController extends Controller
                 'version_name' => $this->version_name,
                 'version_code' => $this->version_code,
                 'facebook_url' => $this->facebook_url,
-                'instagram_url' => $this->instagram_url 
+                'instagram_url' => $this->instagram_url
             ]);
         } catch(\Exception $ex){
             return response()->json([

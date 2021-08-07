@@ -11,9 +11,11 @@ class DisclosuresController extends Controller
     {
         try {
             $disclosure = Page::where('parent_id', '901')->get();
-            $disclosure['name_en'] = 'Companies And Disclosures';
-            $disclosure['name'] = 'الشركات و إفصاحاتها   ';
-            $disclosure['id'] = 901;
+            $disclosure->push([
+                'name_en' =>  'Companies And Disclosures',
+                'name' => 'الشركات و إفصاحاتها   ',
+                'id'=>901
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $disclosure

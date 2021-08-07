@@ -11,9 +11,11 @@ class ComplaintsController extends Controller
     {
         try {
             $complaint = Page::where('id', '970')->first();
-            $complaint['name_en'] = 'Complaints';
-            $complaint['name'] = ' الشكاوى   ';
-            $complaint['id'] = 970;
+            $complaint->push([
+                'name_en' =>  'Complaints',
+                'name' => ' الشكاوى   ',
+                'id'=>970
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $complaint

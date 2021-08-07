@@ -11,9 +11,11 @@ class InternationalRelationsController extends Controller
     {
         try {
             $relation = Page::where('parent_id', '1497')->get();
-            $relation['name_en'] = 'International Relations';
-            $relation['name'] = 'العلاقات الدولية  ';
-            $relation['id'] = 1497;
+            $relation->push([
+                'name_en' =>  'International Relations',
+                'name' => 'العلاقات الدولية  ',
+                'id'=>1497
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $relation

@@ -11,9 +11,11 @@ class JobOpportunitiesController extends Controller
     {
         try {
             $opportunity = Page::where('parent_id', '971')->get();
-            $opportunity['name_en'] = 'Job Opportunities';
-            $opportunity['name'] = 'فرص عمل  ';
-            $opportunity['id'] = 971;
+            $opportunity->push([
+                'name_en' =>  'Job Opportunities',
+                'name' => 'فرص عمل  ',
+                'id'=>971
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $opportunity

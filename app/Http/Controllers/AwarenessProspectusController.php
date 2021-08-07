@@ -11,9 +11,11 @@ class AwarenessProspectusController extends Controller
     {
         try {
             $awareness = Page::where('parent_id', '990')->paginate(10);
-            $awareness['name_en'] = 'Awareness Prospectus';
-            $awareness['name'] = 'نشرات التوعية  ';
-            $awareness['id'] = 990;
+            $awareness->push([
+                'name_en' =>  'Awareness Prospectus',
+                'name' => 'نشرات التوعية  ',
+                'id'=>990
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $awareness

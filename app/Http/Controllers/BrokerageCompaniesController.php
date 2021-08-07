@@ -11,9 +11,11 @@ class BrokerageCompaniesController extends Controller
     {
         try {
             $company = Page::where('parent_id', '910')->get();
-            $company['name_en'] = 'Brokerage  companies';
-            $company['name'] = 'شركات الوساطة  ';
-            $company['id'] = 910;
+            $company->push([
+                'name_en' =>  'Brokerage  companies',
+                'name' => 'شركات الوساطة  ',
+                'id'=>910
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $company

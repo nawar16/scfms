@@ -11,9 +11,11 @@ class JointStockAnnouncementsController extends Controller
     {
         try {
             $announcement = Page::where('parent_id', '7063')->paginate(10);
-            $announcement['name_en'] = 'Joint-Stock Announcements';
-            $announcement['name'] = ' إعلانات الشركات المساهمة  ';
-            $announcement['id'] = 7063;
+            $announcement->push([
+                'name_en' =>  'Joint-Stock Announcements',
+                'name' => ' إعلانات الشركات المساهمة  ',
+                'id'=>7063
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $announcement

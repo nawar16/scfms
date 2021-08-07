@@ -11,9 +11,11 @@ class MeetingsController extends Controller
     {
         try {
             $meeting = Page::where('parent_id', '3695')->orderBy('e_date', 'DESC')->get();
-            $meeting['name_en'] = 'General Assembly Meetings';
-            $meeting['name'] = 'اجتماعات الهيئة العامة  ';
-            $meeting['id'] = 3695;
+            $meeting->push([
+                'name_en' =>  'General Assembly Meetings',
+                'name' => 'اجتماعات الهيئة العامة  ',
+                'id'=>3695
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $meeting

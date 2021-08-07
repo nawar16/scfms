@@ -30,7 +30,7 @@ Route::resource('brokerage_companies', 'BrokerageCompaniesController');
 Route::resource('joint_stock_companies', 'JointStockCompaniesController');
 //مدققو الحسابات
 Route::resource('auditors', 'AuditorsController');
-//معلومة 
+//معلومة
 Route::resource('info', 'InfoController');
 //مواقع هامة
 Route::resource('important_sites', 'ImportantSitesController');
@@ -53,7 +53,7 @@ Route::resource('arbitrators', 'ArbitratorsController');
 Route::resource('meetings', 'MeetingsController');
 //الشركات و إفصاحاتها
 Route::resource('disclosures', 'DisclosuresController');
-//نشرات التوعية 
+//نشرات التوعية
 Route::resource('awareness_prospectus', 'AwarenessProspectusController');
 //اخبار الشركات
 Route::resource('company_news', 'CompanyNewsController');

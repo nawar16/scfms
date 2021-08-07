@@ -11,9 +11,11 @@ class InfoController extends Controller
     {
         try {
             $info = Page::where('parent_id', '9273')->get();
-            $info['name_en'] = 'Information on fly';
-            $info['name'] = 'معلومة  ';
-            $info['id'] = 9273;
+            $info->push([
+                'name_en' =>  'Information on fly',
+                'name' => 'معلومة  ',
+                'id'=>9273
+            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $info
