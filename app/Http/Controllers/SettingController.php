@@ -72,8 +72,6 @@ class SettingController extends Controller
             }
             $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
-            //return (object)array_values((array)$menu);
-            //return json_decode(json_encode($menu), true);
             $have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
             foreach($menu as $hsm)
             {
@@ -88,17 +86,24 @@ class SettingController extends Controller
                     $hsm->setRelation('pages', null);
                 }
             }
-            $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
-            ->orderBy('id', 'DESC')->first();
             $menu->push([
                  'name_en' => 'setting',
                  'name' => 'اعدادات التطبيق',
                  'id'=>0
             ]);
+            $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
+            ->orderBy('id', 'DESC')->first();
+            $res_info['id'] = $info->id;
+            $info_html = "<div>";
+            $info_html .= "<h3>".$info->name."</h3>";
+            $info_html .= '<img src="'.$info->image.'"/>';
+            $info_html .= '<div>'.$info->text.'</div>';
+            $info_html .= "</div>";
+            $res_info['content'] = $info_html;
             return response()->json([
                 'status' => 'success',
                 'menu' => $menu,
-                'info' => $info,
+                'info' => $res_info,
                 'date_en' => \Carbon\Carbon::now()->format('D d F Y'),
                 'date_ar' => get_html_date_time(strtotime(date('Y-m-d'))),
                 'copyright_txt' => $this->copyright_txt,
