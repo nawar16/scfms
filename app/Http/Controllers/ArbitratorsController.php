@@ -11,11 +11,6 @@ class ArbitratorsController extends Controller
     {
         try {
             $arbitrators = Page::where('parent_id', '954')->get();
-            $arbitrators->push([
-                'name_en' => 'Arbitrators',
-                'name' => 'المحكمون ',
-                'id'=>954
-            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $arbitrators

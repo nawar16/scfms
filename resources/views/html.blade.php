@@ -1,1 +1,4 @@
-<p dir=\"RTL\" style=\"text-align: justify;\">\r\n\tيُعتبر نظام إدارة الأوامر <span dir=\"LTR\">Order Management System</span> حجر الزاوية في عمليات التداول عبر الانترنت.</p>\r\n<p dir=\"RTL\" style=\"text-align: justify;\">\r\n\tوهو نظام الكتروني تقدّمه شركة الوساطة، وتختبره السوق وتوافق عليه.</p>\r\n<p dir=\"RTL\" style=\"text-align: justify;\">\r\n\tيقوم هذا النظام <strong>باستقبال</strong> أوامر العملاء عبر الانترنت وبا<strong>لتأكّد من صلاحيتها</strong> ومن ثمّ إرسالها الكترونياً إلى نظام التداول الالكتروني المعمول به في السوق.</p>\r\n<p dir=\"RTL\" style=\"text-align: justify;\">\r\n\t&nbsp;</p>\r\n<p dir=\"RTL\">\r\n\tيمكن التواصل معنا وإرسال الاستفسارات عن طريق <a href=\"https://www.facebook.com/scfms.sy\"><span dir=\"LTR\">https://www.facebook.com/scfms.sy</span></a></p>\r\n<p>\r\n\t&nbsp;</p>\r\n
+"<p style='text-align: center;'>يمكن التواصل معنا وإرسال الاستفسارات عن طريق</p>"
+            "<p align='center' dir='RTL'>"
+	        "<a href='https://www.facebook.com/scfms.sy'>"
+            "<span dir='LTR'>https://www.facebook.com/scfms.sy</span></a></p>"

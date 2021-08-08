@@ -64,3 +64,6 @@ Route::resource('international_relations','InternationalRelationsController');
 Route::get('html', function(){
     return view('html');
 });
+Route::get('html2', function(){
+    return view('html2');
+});

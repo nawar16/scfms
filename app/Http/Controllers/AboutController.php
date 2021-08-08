@@ -11,11 +11,6 @@ class AboutController extends Controller
     {
         try {
             $about = Page::where('parent_id', '1')->get();
-            $about->push([
-                'name_en' =>  'About',
-                'name' => ' حول الهيئة',
-                'id'=>1
-            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $about

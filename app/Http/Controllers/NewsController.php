@@ -11,11 +11,6 @@ class NewsController extends Controller
     {
         try {
             $news = Page::where('parent_id', '73')->get();
-            $news->push([
-                'name_en' =>  'News',
-                'name' => 'الأخبار  ',
-                'id'=>73
-            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $news

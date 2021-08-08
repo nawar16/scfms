@@ -11,11 +11,6 @@ class JointStockCompaniesController extends Controller
     {
         try {
             $stock = Page::where('parent_id', '899')->get();
-            $stock->push([
-                'name_en' =>  'Joint-stock companies',
-                'name' => 'الشركات المساهمة  ',
-                'id'=>899
-            ]);
             return response()->json([
                 'status' => 'success',
                 'data' => $stock
