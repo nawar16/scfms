@@ -94,16 +94,12 @@ class SettingController extends Controller
             $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->first();
             $res_info['id'] = $info->id;
-            $info_html = "<div>";
-            $info_html .= "<div style='margin-bottom: 30px'>";
-            $info_html .= "<img style='width: 100% margin_center: auto' src='http://www.scfms.sy/images/fyi-header.png'>";
-            $info_html .= "</div>";
+            $info_html = "<div style='display:inline-block; margin-left: auto; margin-right: auto; text-align: right;'>";
             $info_html .= "<div style='margin: 30px 0'>";
             $info_html .= '<img src="'.$info->image." style='display: block; margin-left: auto; margin-right: auto;'/>";
             $info_html .= "</div>";
             $info_html .= "<h3 style='text-align:right'>".$info->name."</h3>";
-            $info_html .= $info->text;
-            $info_html .= "<p style='text-align: center;'>".$info->text."</p>";
+            $info_html .= "<p style='text-align: right;'>".$info->text."</p>";
             $info_html .= "</div>";
             $res_info['content'] = $info_html;
             return response()->json([
