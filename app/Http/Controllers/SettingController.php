@@ -96,7 +96,7 @@ class SettingController extends Controller
             $res_info['id'] = $info->id;
             $info_html = "<div style='display:inline-block; margin-left: auto; margin-right: auto; text-align: right;'>";
             $info_html .= "<div style='margin: 30px 0'>";
-            $info_html .= '<img src="'.$info->image." style='display: block; margin-left: auto; margin-right: auto;'/>";
+            $info_html .= "<img src='$info->photo' style='max-width: 100%; height: auto; margin-left: auto; margin-right: auto;'/>";
             $info_html .= "</div>";
             $info_html .= "<h3 style='text-align:right'>".$info->name."</h3>";
             $info_html .= "<p style='text-align: right;'>".$info->text."</p>";
