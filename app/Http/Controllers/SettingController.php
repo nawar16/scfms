@@ -70,7 +70,7 @@ class SettingController extends Controller
                     'message' => 'failed store device data'
                 ]);
             }
-            $menu = Page::where('parent_id',0)->whereNotIn('id', [9282])
+            $menu = Page::where('parent_id',0)->whereNotIn('id', [9282,1019,159])
             ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             $have_sub_menu = Page::whereIn('id', [1, 919, 899, 890, 1497])->get();
             foreach($menu as $hsm)
