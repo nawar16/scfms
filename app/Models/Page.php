@@ -71,5 +71,10 @@ class Page extends Model
         return $pages;
     }*/
 
+    public function getTextAttribute($value) 
+    { 
+        return  '<div style="direction: rtl;">'.$value.'</div>'; 
+    }
+
 
 }

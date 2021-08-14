@@ -21,6 +21,23 @@ class NewsController extends Controller
                 'message' => 'something error'
             ]);
         }
-
+    }
+    public function news_year($id, $year)
+    {
+        try {
+            $news = Page::where('parent_id', $id)
+            ->whereYear('e_date',$year)
+            ->orderBy('the_order', 'ASC')
+            ->orderBy('id', 'DESC')->paginate(10);
+            return response()->json([
+                'status' => 'success',
+                'data' => $news
+            ]);
+        } catch(\Exception $ex){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'something error'
+            ]);
+        }
     }
 }

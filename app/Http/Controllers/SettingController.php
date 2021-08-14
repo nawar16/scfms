@@ -11,8 +11,8 @@ class SettingController extends Controller
 {
     protected $version_name = "1.0";
     protected $version_code = 1;
-    protected $copyright_txt = "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
-    protected $copyright_link = "https://syrianmonster.com/";
+    protected $copyright_txt ='';// "Powered by <a href=\"#\" target=\"_blank\">SWT</a>";
+    protected $copyright_link = '';//"https://syrianmonster.com/";
     protected $facebook_url = "https://www.facebook.com/scfms.sy/";
     protected $instagram_url = "https://www.instagram.com/scfms.sy/";
 

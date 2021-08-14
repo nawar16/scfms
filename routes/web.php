@@ -22,6 +22,7 @@ Route::post('setting', 'SettingController@setting');
 Route::resource('about', 'AboutController');
 Route::resource('contact', 'ContactController');
 Route::resource('news', 'NewsController');
+Route::get('news/{id}/{year}', 'NewsController@news_year');
 //التشريعات والقوانين
 Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
 //شركات الوساطة
