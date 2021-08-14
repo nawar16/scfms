@@ -11,6 +11,7 @@ class ContactController extends Controller
     {
         try{
             $contact = Page::where('id', '2')->first();
+            //return $contact->text;
             return response()->json([
                 'status' => 'success',
                 'data' => $contact

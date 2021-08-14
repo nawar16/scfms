@@ -61,7 +61,7 @@ Route::resource('company_news', 'CompanyNewsController');
 //العلاقات الدولية
 Route::resource('international_relations','InternationalRelationsController');
 //الرئيسية
-//Route::resource('home', 'HomeController');
+Route::resource('home', 'HomeController');
 Route::get('html', function(){
     return view('html');
 });
