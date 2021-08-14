@@ -26,7 +26,7 @@ class NewsController extends Controller
     {
         try {
             $news = Page::where('parent_id', $id)
-            ->whereYear('e_date',$year)
+            ->whereYear('publish_date',$year)
             ->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->paginate(10);
             return response()->json([

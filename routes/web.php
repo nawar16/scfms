@@ -49,7 +49,6 @@ Route::resource('annual_report', 'AnnualReportController');
 Route::resource('manuals_and_forms', 'ManualsAndFormsController');
 //المحكومون
 Route::resource('arbitrators', 'ArbitratorsController');
-
 //اجتماعات الهيئة العامة
 Route::resource('meetings', 'MeetingsController');
 //الشركات و إفصاحاتها
@@ -62,9 +61,9 @@ Route::resource('company_news', 'CompanyNewsController');
 Route::resource('international_relations','InternationalRelationsController');
 //الرئيسية
 Route::resource('home', 'HomeController');
-Route::get('html', function(){
+/*Route::get('html', function(){
     return view('html');
 });
 Route::get('html2', function(){
     return view('html2');
-});
+});*/
