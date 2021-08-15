@@ -23,6 +23,7 @@ Route::resource('about', 'AboutController');
 Route::resource('contact', 'ContactController');
 Route::resource('news', 'NewsController');
 Route::get('news/{id}/{year}', 'NewsController@news_year');
+Route::get('awareness_prospectus/{year}', 'AwarenessProspectusController@awareness_year');
 //التشريعات والقوانين
 Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
 //شركات الوساطة

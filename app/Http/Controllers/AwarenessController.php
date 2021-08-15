@@ -23,4 +23,5 @@ class AwarenessController extends Controller
         }
 
     }
+
 }
