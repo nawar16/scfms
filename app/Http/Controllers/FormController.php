@@ -18,7 +18,7 @@ class FormController extends Controller
             'message' => 'required',
         ]);
 
-        $subject  = 'Send Enquiry';
+        $subject  = 'استفسار';
         $message  = request('message');
         $name  = request('name');
         $email  = request('email');
@@ -27,7 +27,7 @@ class FormController extends Controller
 
 
         $message_body = "<html><body><table border='0' dir='rtl' width='100%' cellpadding='5' cellspacing='0'><tr><td align='right'>
-					<h2> اتصال عن طريق  التطبيق - بتاريخ : ".date('d-m-Y')." </h2><br /><br /> 
+					<h2> استفسار عن طريق  التطبيق - بتاريخ : ".date('d-m-Y')." </h2><br /><br /> 
 					<h2>وفيما يلي تفاصيل الاتصال : <br /><br />
 					الاسم : ".$name."<br />
 					البريد الإلكتروني: ".$email."<br />
