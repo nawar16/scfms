@@ -8,7 +8,8 @@ class FormController extends Controller
 {
     public function form(Request $request)
     {
-        $to_email = \DB::table('settings')->first()->contact_email;
+        //$to_email = \DB::table('settings')->first()->contact_email;
+        $to_email = "it@scfms.sy";
         $this->validate($request, [
             'phone' => 'required',
             'name' => 'required',
@@ -49,7 +50,6 @@ class FormController extends Controller
         } else {
             return response()->json(['status' => 'error', 'message' => 'خطأ في الارسال']);
         }
-
 
     }
 }
