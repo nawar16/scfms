@@ -9,7 +9,7 @@ class FormController extends Controller
     public function form(Request $request)
     {
         //$to_email = \DB::table('settings')->first()->contact_email;
-        $to_email = "it@scfms.sy";
+        $to_email = "app@scfms.sy";
         $this->validate($request, [
             'phone' => 'required',
             'name' => 'required',
