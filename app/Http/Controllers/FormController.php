@@ -16,25 +16,27 @@ class FormController extends Controller
             'address' => 'required',
             'email' => 'required|email',
             'message' => 'required',
-            //'captcha' => 'required|captcha',
         ]);
 
-        $subject  = 'إرسال استفسار ';
+        $subject  = 'Send Enquiry';
         $message  = request('message');
         $name  = request('name');
         $email  = request('email');
+        $phone  = request('phone');
+        $address  = request('address');
 
 
         $message_body = "<html><body><table border='0' dir='rtl' width='100%' cellpadding='5' cellspacing='0'><tr><td align='right'>
-					<h2> اتصال عن طريق  الموقع  ".$_SERVER['HTTP_HOST']." - بتاريخ : ".date('d-m-Y')." </h2><br /><br /> 
+					<h2> اتصال عن طريق  التطبيق - بتاريخ : ".date('d-m-Y')." </h2><br /><br /> 
 					<h2>وفيما يلي تفاصيل الاتصال : <br /><br />
 					الاسم : ".$name."<br />
 					البريد الإلكتروني: ".$email."<br />
-					الموضوع : ".$subject."<br /><br /><br /></h2>
+                    رقم الهاتف: ".$phone."<br />
+                    العنوان : ".$address."<br />
 					<h2>	الرسالة : </h2><h2>".$message."</h2>
 					</td></tr></table></body></html>";
 
-        //Set up the email headers
+        
         $headers  = "From: $name <$email>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-type: text/html; charset=utf-8\r\n";
