@@ -24,6 +24,7 @@ Route::resource('contact', 'ContactController');
 Route::resource('news', 'NewsController');
 Route::get('news/{id}/{year}', 'NewsController@news_year');
 Route::get('awareness_prospectus/{year}', 'AwarenessProspectusController@awareness_year');
+Route::post('form', 'FormController@form');
 //التشريعات والقوانين
 Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
 //شركات الوساطة
@@ -62,9 +63,10 @@ Route::resource('company_news', 'CompanyNewsController');
 Route::resource('international_relations','InternationalRelationsController');
 //الرئيسية
 Route::resource('home', 'HomeController');
-/*Route::get('html', function(){
+Route::get('html', function(){
     return view('html');
 });
 Route::get('html2', function(){
     return view('html2');
-});*/
+});
+
