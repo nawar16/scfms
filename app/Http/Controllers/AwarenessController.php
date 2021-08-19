@@ -10,7 +10,8 @@ class AwarenessController extends Controller
     public function index()
     {
         try {
-            $awareness = Page::where('parent_id', '890')->paginate(10);
+            $awareness = Page::where('parent_id', '890')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->paginate(10);
             return response()->json([
                 'status' => 'success',
                 'data' => $awareness

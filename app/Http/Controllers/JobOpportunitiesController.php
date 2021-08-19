@@ -10,7 +10,8 @@ class JobOpportunitiesController extends Controller
     public function index()
     {
         try {
-            $opportunity = Page::where('parent_id', '971')->get();
+            $opportunity = Page::where('parent_id', '971')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $opportunity

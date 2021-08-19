@@ -10,7 +10,8 @@ class BrokerageCompaniesController extends Controller
     public function index()
     {
         try {
-            $company = Page::where('parent_id', '910')->get();
+            $company = Page::where('parent_id', '910')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $company

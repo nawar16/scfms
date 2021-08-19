@@ -25,6 +25,9 @@ Route::resource('news', 'NewsController');
 Route::get('news/{id}/{year}', 'NewsController@news_year');
 Route::get('awareness_prospectus/{year}', 'AwarenessProspectusController@awareness_year');
 Route::post('form', 'FormController@form');
+//اختبر معلوماتك
+Route::get('quiz', 'QuizController@quiz');
+Route::post('result', 'QuizController@result');
 //التشريعات والقوانين
 Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
 //شركات الوساطة

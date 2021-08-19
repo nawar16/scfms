@@ -10,7 +10,8 @@ class RegulationsAndDecisionsController extends Controller
     public function index()
     {
         try {
-            $regulation = Page::where('parent_id', '919')->get();
+            $regulation = Page::where('parent_id', '919')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $regulation

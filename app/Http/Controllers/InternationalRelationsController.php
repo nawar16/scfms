@@ -10,7 +10,8 @@ class InternationalRelationsController extends Controller
     public function index()
     {
         try {
-            $relation = Page::where('parent_id', '1497')->get();
+            $relation = Page::where('parent_id', '1497')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $relation

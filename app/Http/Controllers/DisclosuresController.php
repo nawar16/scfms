@@ -10,7 +10,8 @@ class DisclosuresController extends Controller
     public function index()
     {
         try {
-            $disclosure = Page::where('parent_id', '901')->get();
+            $disclosure = Page::where('parent_id', '901')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $disclosure

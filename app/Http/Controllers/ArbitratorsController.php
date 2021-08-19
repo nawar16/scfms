@@ -10,7 +10,8 @@ class ArbitratorsController extends Controller
     public function index()
     {
         try {
-            $arbitrators = Page::where('parent_id', '954')->whereNotIn('id', [4682])->get();
+            $arbitrators = Page::where('parent_id', '954')->whereNotIn('id', [4682])
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $arbitrators

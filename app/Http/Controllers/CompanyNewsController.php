@@ -10,7 +10,8 @@ class CompanyNewsController extends Controller
     public function index()
     {
         try {
-            $news = Page::where('parent_id', '894')->paginate(10);
+            $news = Page::where('parent_id', '894')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->paginate(10);
             return response()->json([
                 'status' => 'success',
                 'data' => $news

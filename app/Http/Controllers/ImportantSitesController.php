@@ -10,7 +10,8 @@ class ImportantSitesController extends Controller
     public function index()
     {
         try {
-            $sites = Page::where('parent_id', '972')->get();
+            $sites = Page::where('parent_id', '972')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $sites

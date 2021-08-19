@@ -10,7 +10,8 @@ class AuditorsController extends Controller
     public function index()
     {
         try {
-            $auditor = Page::where('parent_id', '953')->paginate(10);
+            $auditor = Page::where('parent_id', '953')->orderBy('the_order', 'ASC')
+            ->orderBy('id', 'DESC')->paginate(10);
             return response()->json([
                 'status' => 'success',
                 'data' => $auditor

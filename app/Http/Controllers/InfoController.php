@@ -20,7 +20,8 @@ class InfoController extends Controller
         $res_info['content'] = $info_html;
         return $info_html;*/
         try {
-            $info = Page::where('parent_id', '9273')->get();
+            $info = Page::where('parent_id', '9273')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $info
