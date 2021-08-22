@@ -47,7 +47,7 @@ class HomeController extends Controller
                     'disclosures' => $disclosures,
                     'banks' => $banks,
                     'annual_report' => $reports,
-                    'awareness-prospectus' => $awareness,
+                    'awareness_prospectus' => $awareness,
                     'general_assembly_meetings' => $general_assembly_meetings,
                     'regulations_and_decisions' => $regulations,
                     'prospectuses' => $prospectuses,
