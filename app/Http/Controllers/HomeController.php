@@ -88,7 +88,7 @@ class HomeController extends Controller
                 ->orWhere('description_en', 'LIKE', "%{$search}%")
                 ->orWhere('text', 'LIKE', "%{$search}%")
                 ->orWhere('text_en', 'LIKE', "%{$search}%")
-                ->get();
+                ->paginate(10);
             return response()->json([
                 'status' => 'success',
                 'data' => $page
