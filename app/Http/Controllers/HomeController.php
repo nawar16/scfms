@@ -78,6 +78,27 @@ class HomeController extends Controller
         }
 
     }
-
+    public function search(Request $request){
+        try {
+            $search = $request->input('search');
+            $page = page::query()
+                ->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('name_en', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%")
+                ->orWhere('description_en', 'LIKE', "%{$search}%")
+                ->orWhere('text', 'LIKE', "%{$search}%")
+                ->orWhere('text_en', 'LIKE', "%{$search}%")
+                ->get();
+            return response()->json([
+                'status' => 'success',
+                'data' => $page
+            ]);
+        } catch(\Exception $ex){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'something error'
+            ]);
+        }
+    }
 
 }

@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/page/{id}', 'HomeController@show');
+Route::post('/search', 'HomeController@search');
 Route::post('setting', 'SettingController@setting');
 Route::resource('about', 'AboutController');
 Route::resource('contact', 'ContactController');
@@ -72,4 +73,5 @@ Route::get('html', function(){
 Route::get('html2', function(){
     return view('html2');
 });
+
 
