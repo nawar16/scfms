@@ -9,12 +9,59 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $all_files = Page::whereNotIn('file_type',['release_bulletin','advertise',''] )
+        ->where('year', 'like', date("Y"))
+        ->where('Active', 1)
+        ->orderBy('the_order', 'DESC')->orderBy('id', 'DESC')
+        ->pluck('parent_id');
+        $ids = array();
+        foreach($all_files as $file) {
+            if($file) array_push($ids, $file);
+        }
+        array_push($ids, -1);
+        $companies = Page::whereIn('id', $ids)
+        ->orderBy('last_update', 'DESC')->orderBy('id', 'DESC')
+        ->limit(5)->get();
+
+        $disclosure_table = array();
+        foreach($companies as $company)
+        {
+            $res['company'] = $company->name;
+            $company_files = Page::where('parent_id', $company->id)
+            ->where('year', 'like', date("Y"))
+            ->where('Active', 1)
+            ->orderBy('publish_date', 'DESC')
+            ->get();
+            $files = array();
+            foreach($company_files as $p) {
+                $file_type = $p['file_type'];
+                $files[$file_type][] = $p;
+            }
+            if(array_key_exists('first',$files))
+            $res['first'] = $files['first'][0];
+            if(array_key_exists('final',$files))
+            $res['final'] = $files['final'][0];
+            if(array_key_exists('first_quarter',$files))
+            $res['first_quarter'] = $files['first_quarter'][0];
+            if(array_key_exists('half',$files))
+            $res['half'] = $files['half'][0];
+            if(array_key_exists('third_quarter',$files))
+            $res['third_quarter'] = $files['third_quarter'][0];
+            if(array_key_exists('emergency',$files))
+            $res['emergency'] = $files['emergency'][0];
+            if(array_key_exists('public_bodies',$files))
+            $res['public_bodies'] = $files['public_bodies'][0];
+            if(array_key_exists('annual_report',$files))
+            $res['annual_report'] = $files['annual_report'][0];
+
+            array_push($disclosure_table, $res);
+        }
         //اخبار الشركات 
         $company_news = Page::where('parent_id', '894')->paginate(10);
         //الافصاحات
-        $disclosures = Page::where('parent_id', '901')->where('Active', '1')->paginate(10);
+        //$disclosures = Page::where('parent_id', '901')->where('Active', '1')->paginate(10);
         //البنوك
-        $banks = Page::where('parent_id', '903')->where('Active', '1')->paginate(10);
+        //$banks = Page::where('parent_id', '903')->where('Active', '1')->paginate(10);
         //التقارير السنوية
         $reports = Page::where('parent_id', '3984')->where('Active', '1')
         ->orderBy('year', 'DESC')->orderBy('publish_date', 'DESC')
@@ -44,8 +91,7 @@ class HomeController extends Controller
                 'status' => 'success',
                 'data' => [
                     'company_news' => $company_news,
-                    'disclosures' => $disclosures,
-                    'banks' => $banks,
+                    'disclosures' => $disclosure_table,
                     'annual_report' => $reports,
                     'awareness_prospectus' => $awareness,
                     'general_assembly_meetings' => $general_assembly_meetings,
