@@ -10,8 +10,9 @@ class ContactController extends Controller
     public function index()
     {
         try{
-            $contact = Page::where('id', '2')->first();
-            //return $contact->text;
+            $contact = Page::where('id', '2')
+            ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')
+            ->first();
             return response()->json([
                 'status' => 'success',
                 'data' => $contact
