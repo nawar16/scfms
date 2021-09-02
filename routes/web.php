@@ -31,6 +31,8 @@ Route::get('quiz', 'QuizController@quiz');
 Route::post('result', 'QuizController@result');
 //التشريعات والقوانين
 Route::resource('regulations_and_decisions', 'RegulationsAndDecisionsController');
+//التعاميم
+Route::get('circulars', 'RegulationsAndDecisionsController@circulars');
 //شركات الوساطة
 Route::resource('brokerage_companies', 'BrokerageCompaniesController');
 // الشركات المساهمة

@@ -27,6 +27,23 @@ class RegulationsAndDecisionsController extends Controller
                 'message' => 'something error'
             ]);
         }
-
+    }
+    public function circulars()
+    {
+        try {
+            $circulars = Page::where('id', '1000')->first()->toArray();
+            unset($circulars['pages']);
+            $pages = Page::where('parent_id', '1000')->get();
+            $circulars['data'] = $pages;
+            return response()->json([
+                'status' => 'success',
+                'data' => $circulars
+            ]);
+        } catch(\Exception $ex){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'something error'
+            ]);
+        }
     }
 }
