@@ -67,6 +67,8 @@ Route::resource('awareness_prospectus', 'AwarenessProspectusController');
 Route::resource('company_news', 'CompanyNewsController');
 //العلاقات الدولية
 Route::resource('international_relations','InternationalRelationsController');
+//المصطلحات
+Route::resource('terms','TermsController');
 //الرئيسية
 Route::resource('home', 'HomeController');
 Route::get('html', function(){

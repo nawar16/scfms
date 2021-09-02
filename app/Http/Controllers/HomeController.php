@@ -127,17 +127,23 @@ class HomeController extends Controller
     public function search(Request $request){
         try {
             $search = $request->input('search');
-            $page = page::query()
-                ->where('name', 'LIKE', "%{$search}%")
-                ->orWhere('name_en', 'LIKE', "%{$search}%")
-                ->orWhere('description', 'LIKE', "%{$search}%")
-                ->orWhere('description_en', 'LIKE', "%{$search}%")
-                ->orWhere('text', 'LIKE', "%{$search}%")
-                ->orWhere('text_en', 'LIKE', "%{$search}%")
-                ->paginate(10);
+            $news = Page::where('Active', 1)
+            ->whereNotIn('id', [1,2,159,73,344,765,766,767])
+            ->whereNotIn('parent_id', [159,344,765,766,2])
+            ->orderBy('the_order', 'DESC')
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
+            $news->filter(function($news_item) use($search){
+                return $news_item->where('name', 'not LIKE', "%{$search}%")
+                ->orWhere('name_en', 'not LIKE', "%{$search}%")
+                ->orWhere('description', 'not LIKE', "%{$search}%")
+                ->orWhere('description_en', 'not LIKE', "%{$search}%")
+                ->orWhere('text', 'not LIKE', "%{$search}%")
+                ->orWhere('text_en', 'not LIKE', "%{$search}%");
+            });
             return response()->json([
                 'status' => 'success',
-                'data' => $page
+                'data' => $news
             ]);
         } catch(\Exception $ex){
             return response()->json([
