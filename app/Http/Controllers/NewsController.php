@@ -10,7 +10,7 @@ class NewsController extends Controller
     public function index()
     {
         try {
-            $news = Page::where('parent_id', '73')->get();
+            $news = Page::where('parent_id', '73')->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $news
