@@ -58,7 +58,9 @@ class Page extends Model
     }
     public function getPagesAttribute()
     {
-        return $this->sub_pages()->orderBy('the_order', 'DESC')->orderBy('id', 'DESC')->paginate(10);
+        return $this->sub_pages()
+        ->orderBy('the_order', 'ASC')->orderBy('id', 'DESC')
+        ->paginate(10);
     }
     ////////////////--- INFINITY DEPTH ---////////////////
     /*public function getPagesAttribute()
