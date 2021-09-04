@@ -127,7 +127,7 @@ class HomeController extends Controller
     public function search(Request $request){
         try {
             $search = $request->input('search');
-            $news = Page::where('Active', 1)
+            /*$news = Page::where('Active', 1)
             ->whereNotIn('id', [1,2,159,73,344,765,766,767])
             ->whereNotIn('parent_id', [159,344,765,766,2])
             ->orderBy('the_order', 'DESC')
@@ -140,7 +140,16 @@ class HomeController extends Controller
                 ->Where('description_en', 'not LIKE', "%{$search}%")
                 ->Where('text', 'not LIKE', "%{$search}%")
                 ->Where('text_en', 'not LIKE', "%{$search}%");
-            });
+            });*/
+            $news = Page::where('Active', 1)
+            ->whereIn('parent_id', [894, 895, 998])
+            ->where(function ($q) use($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('name_en', 'LIKE', "%{$search}%");
+            })
+            ->orderBy('the_order', 'DESC')
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
             $res = array();
             foreach($news as $n)
             {
