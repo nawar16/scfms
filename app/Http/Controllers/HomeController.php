@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use App\Models\Page;
 
@@ -127,20 +128,6 @@ class HomeController extends Controller
     public function search(Request $request){
         try {
             $search = $request->input('search');
-            /*$news = Page::where('Active', 1)
-            ->whereNotIn('id', [1,2,159,73,344,765,766,767])
-            ->whereNotIn('parent_id', [159,344,765,766,2])
-            ->orderBy('the_order', 'DESC')
-            ->orderBy('id', 'DESC')
-            ->paginate(10);
-            $news->filter(function($news_item) use($search){
-                return $news_item->where('name', 'not LIKE', "%{$search}%")
-                ->Where('name_en', 'not LIKE', "%{$search}%")
-                ->Where('description', 'not LIKE', "%{$search}%")
-                ->Where('description_en', 'not LIKE', "%{$search}%")
-                ->Where('text', 'not LIKE', "%{$search}%")
-                ->Where('text_en', 'not LIKE', "%{$search}%");
-            });*/
             $news = Page::where('Active', 1)
             ->whereIn('parent_id', [894, 895, 998])
             ->where(function ($q) use($search) {
@@ -148,8 +135,7 @@ class HomeController extends Controller
                 ->orWhere('name_en', 'LIKE', "%{$search}%");
             })
             ->orderBy('the_order', 'DESC')
-            ->orderBy('id', 'DESC')
-            ->paginate(10);
+            ->orderBy('id', 'DESC')->get();
             $res = array();
             foreach($news as $n)
             {
@@ -157,9 +143,13 @@ class HomeController extends Controller
                 unset($m['pages']);
                 array_push($res, $m);
             }
+            $total = count($res);
+            $perPage = 10; 
+            $currentPage = 1;
+            $paginator = new LengthAwarePaginator($res, $total, $perPage, $currentPage);
             return response()->json([
                 'status' => 'success',
-                'data' => $res
+                'data' => $paginator
             ]);
         } catch(\Exception $ex){
             return response()->json([
