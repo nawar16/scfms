@@ -135,15 +135,22 @@ class HomeController extends Controller
             ->paginate(10);
             $news->filter(function($news_item) use($search){
                 return $news_item->where('name', 'not LIKE', "%{$search}%")
-                ->orWhere('name_en', 'not LIKE', "%{$search}%")
-                ->orWhere('description', 'not LIKE', "%{$search}%")
-                ->orWhere('description_en', 'not LIKE', "%{$search}%")
-                ->orWhere('text', 'not LIKE', "%{$search}%")
-                ->orWhere('text_en', 'not LIKE', "%{$search}%");
+                ->Where('name_en', 'not LIKE', "%{$search}%")
+                ->Where('description', 'not LIKE', "%{$search}%")
+                ->Where('description_en', 'not LIKE', "%{$search}%")
+                ->Where('text', 'not LIKE', "%{$search}%")
+                ->Where('text_en', 'not LIKE', "%{$search}%");
             });
+            $res = array();
+            foreach($news as $n)
+            {
+                $m = $n->toArray();
+                unset($m['pages']);
+                array_push($res, $m);
+            }
             return response()->json([
                 'status' => 'success',
-                'data' => $news
+                'data' => $res
             ]);
         } catch(\Exception $ex){
             return response()->json([
