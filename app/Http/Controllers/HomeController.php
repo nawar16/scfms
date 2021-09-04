@@ -146,7 +146,7 @@ class HomeController extends Controller
             }
             $total = count($res);
             $perPage = 10; 
-            $currentPage = 1;
+            $currentPage = LengthAwarePaginator::resolveCurrentPage('special') - 1;
             $paginator = new LengthAwarePaginator($res, $total, $perPage, $currentPage);
             return response()->json([
                 'status' => 'success',
