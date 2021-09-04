@@ -135,7 +135,8 @@ class HomeController extends Controller
                 ->orWhere('name_en', 'LIKE', "%{$search}%");
             })
             ->orderBy('the_order', 'DESC')
-            ->orderBy('id', 'DESC')->get();
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
             $res = array();
             foreach($news as $n)
             {
