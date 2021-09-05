@@ -62,6 +62,7 @@ Route::resource('meetings', 'MeetingsController');
 //الشركات و إفصاحاتها
 Route::resource('disclosures', 'DisclosuresController');
 Route::get('company/{id}','DisclosuresController@company');
+Route::get('company_info/{id}', 'DisclosuresController@company_info');
 //نشرات التوعية
 Route::resource('awareness_prospectus', 'AwarenessProspectusController');
 //اخبار الشركات

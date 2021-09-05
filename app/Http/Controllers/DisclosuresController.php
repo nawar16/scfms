@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\Info;
+use App\Models\Managment;
 
 class DisclosuresController extends Controller
 {
@@ -15,7 +17,6 @@ class DisclosuresController extends Controller
             $disclosure = $disclosure->map(function($dis){
                 $data = Page::where('parent_id', $dis->id)->get();
                 $data = $data->map(function($d){
-                    $ddata = Page::where('parent_id', $d->id)->get();
                     return [
                         'id' => $d->id,
                         'name' => $d->name,
@@ -23,8 +24,7 @@ class DisclosuresController extends Controller
                         'name_en' => $d->name_en,
                         'cleanurl_en' => $d->cleanurl_en,
                         'text' => $d->text,
-                        'text_en' => $d->text_en,
-                        'data' => $ddata
+                        'text_en' => $d->text_en
                     ];
                 });
                 return [
@@ -95,4 +95,24 @@ class DisclosuresController extends Controller
                 ]);
             }
     }
+    public function company_info($id)
+    {
+        try{
+            $tables = array();
+            $info = Info::where('parent_id', $id)->first();
+            $tables['company_information'] = $info;
+            $info = Managment::where('parent_id', $id)->get();
+            $tables['board_of_directors'] = $info;
+            return response()->json([
+                'status' => 'success',
+                'data' => $tables
+            ]);
+        } catch(\Exception $ex){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'something error'
+                ]);
+            }
+    }
 }
+

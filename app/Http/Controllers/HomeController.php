@@ -57,6 +57,7 @@ class HomeController extends Controller
 
             array_push($disclosure_table, $res);
         }
+        $disclosure_table['image'] = 'http://scfms.sy/images/back-2.jpg';
         //اخبار الشركات 
         $company_news = Page::where('parent_id', '894')->paginate(10);
         //الافصاحات
@@ -71,7 +72,7 @@ class HomeController extends Controller
         $awareness = Page::where('parent_id', '990')->where('Active', '1')
         ->orderBy('the_order', 'DESC')->orderBy('id', 'DESC')->paginate(10);
         //اجتماعات الهيئة العامة
-        $general_assembly_meetings = Page::where('parent_id', '3695')->where('Active', '1')->paginate(10);
+        $general_assembly_meetings = Page::where('parent_id', '3695')->where('Active', '1')->get();
         //التشريعات والقرارات والتعاميم
         $regulations = Page::whereIn('parent_id', array(919, 1000))
         ->where(function ($q) {
