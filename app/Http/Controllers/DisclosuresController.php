@@ -82,11 +82,17 @@ class DisclosuresController extends Controller
                 if(array_key_exists('annual_report',$files))
                 $res['annual_report'] = $files['annual_report'][0];
 
-                $ans[$y] = $res;
+                $ans[$y] = (object)$res;
             }
+            $tables = array();
+            $info = Info::where('parent_id', $id)->first();
+            $tables['company_information'] = $info;
+            $info = Managment::where('parent_id', $id)->get();
+            $tables['board_of_directors'] = $info;
+            $tables['disclosures'] = $ans;
             return response()->json([
                 'status' => 'success',
-                'data' => $ans
+                'data' => $tables
             ]);
         } catch(\Exception $ex){
                 return response()->json([
