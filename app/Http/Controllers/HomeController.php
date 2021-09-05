@@ -57,7 +57,6 @@ class HomeController extends Controller
 
             array_push($disclosure_table, $res);
         }
-        $disclosure_table['image'] = 'http://scfms.sy/images/back-2.jpg';
         //اخبار الشركات 
         $company_news = Page::where('parent_id', '894')->paginate(10);
         //الافصاحات
@@ -93,6 +92,7 @@ class HomeController extends Controller
                 'status' => 'success',
                 'data' => [
                     'company_news' => $company_news,
+                    'image' => 'http://scfms.sy/images/back-2.jpg',
                     'disclosures' => $disclosure_table,
                     'annual_report' => $reports,
                     'awareness_prospectus' => $awareness,
@@ -126,7 +126,8 @@ class HomeController extends Controller
         }
 
     }
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         try {
             $search = $request->input('search');
             $news = Page::where('Active', 1)
@@ -138,20 +139,22 @@ class HomeController extends Controller
             ->orderBy('the_order', 'DESC')
             ->orderBy('id', 'DESC')
             ->paginate(10);
-            $res = array();
-            foreach($news as $n)
-            {
-                $m = $n->toArray();
-                unset($m['pages']);
-                array_push($res, $m);
-            }
-            $total = count($res);
-            $perPage = 10; 
-            $currentPage = LengthAwarePaginator::resolveCurrentPage('special') - 1;
-            $paginator = new LengthAwarePaginator($res, $total, $perPage, $currentPage);
+            $news->map(function($n){
+                return [
+                    'id' => $n->id,
+                    'name' => $n->name,
+                    'cleanurl' => $n->cleanurl,
+                    'name_en' => $n->name_en,
+                    'cleanurl_en' => $n->cleanurl_en,
+                    'text' => $n->text,
+                    'text_en' => $n->text_en,
+                    'description' => $n->description,
+                    'description_en' => $n->description_en
+                ];
+            });
             return response()->json([
                 'status' => 'success',
-                'data' => $paginator
+                'data' => $news
             ]);
         } catch(\Exception $ex){
             return response()->json([
