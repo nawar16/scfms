@@ -87,7 +87,7 @@ class SettingController extends Controller
                 }
             }
             $menu->push([
-                 'name_en' => 'setting',
+                 'name_en' => 'Settings',
                  'name' => 'إعدادات التطبيق',
                  'id'=>0
             ]);
