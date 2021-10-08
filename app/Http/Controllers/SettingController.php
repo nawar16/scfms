@@ -86,10 +86,29 @@ class SettingController extends Controller
                     $hsm->setRelation('pages', null);
                 }
             }
-            $menu->push([
+            $menu->push(
+            [
                  'name_en' => 'Settings',
                  'name' => 'إعدادات التطبيق',
                  'id'=>0
+            ],
+            [
+                'name_en' => 'Damascuse Securities Exchange',
+                'name' => 'سوق دمشق للأوراق المالية',
+                'sub_menu' => [
+                    [
+                        'name_en' => 'Market Summary ',
+                        'name' => 'ملخص السوق',
+                    ],
+                    [
+                        'name_en' => 'Market Performance ',
+                        'name' => 'أداء السوق',
+                    ],
+                    [
+                        'name_en' => 'Tading Bulletin ',
+                        'name' => 'نشرة التداول',
+                    ],
+                ]
             ]);
             $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->first();
