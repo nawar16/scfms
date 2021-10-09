@@ -95,18 +95,22 @@ class SettingController extends Controller
             [
                 'name_en' => 'Damascuse Securities Exchange',
                 'name' => 'سوق دمشق للأوراق المالية',
+                'id' => '10000',
                 'sub_menu' => [
                     [
                         'name_en' => 'Market Summary ',
                         'name' => 'ملخص السوق',
+                        'id' => '10001',
                     ],
                     [
                         'name_en' => 'Market Performance ',
                         'name' => 'أداء السوق',
+                        'id' => '10002',
                     ],
                     [
                         'name_en' => 'Tading Bulletin ',
                         'name' => 'نشرة التداول',
+                        'id' => '10003',
                     ],
                 ]
             ]);
