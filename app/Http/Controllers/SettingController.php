@@ -91,8 +91,8 @@ class SettingController extends Controller
                  'name_en' => 'Settings',
                  'name' => 'إعدادات التطبيق',
                  'id'=>0
-            ],
-            [
+            ]);
+            $insert = [
                 'name_en' => 'Damascuse Securities Exchange',
                 'name' => 'سوق دمشق للأوراق المالية',
                 'id' => '10000',
@@ -108,12 +108,14 @@ class SettingController extends Controller
                         'id' => '10002',
                     ],
                     [
-                        'name_en' => 'Tading Bulletin ',
+                        'name_en' => 'Exchange Report ',
                         'name' => 'نشرة التداول',
+                        'url' => 'http://dse.sy/reports/exchange_report',
                         'id' => '10003',
                     ],
                 ]
-            ]);
+            ];
+            $menu->put(16, $insert);
             $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->first();
             $res_info['id'] = $info->id;
