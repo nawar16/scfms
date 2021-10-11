@@ -116,6 +116,10 @@ class SettingController extends Controller
                 ]
             ];
             $menu->put(16, $insert);
+            $menu->push(
+                [
+                     'exchange_report_url' => 'http://dse.sy/reports/exchange_report',
+                ]);
             $info = Page::where('parent_id',9273)->orderBy('the_order', 'ASC')
             ->orderBy('id', 'DESC')->first();
             $res_info['id'] = $info->id;
