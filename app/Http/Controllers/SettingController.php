@@ -15,7 +15,7 @@ class SettingController extends Controller
     protected $copyright_link = "https://syrianmonster.com/";
     protected $facebook_url = "https://www.facebook.com/scfms.sy/";
     protected $instagram_url = "https://www.instagram.com/scfms.sy/";
-    protected $exchange_report_url = "#";//'http://dse.sy/reports/exchange_report';
+    protected $exchange_report_url = 'http://dse.sy/reports/exchange_report';
 
 
     public function register_device(Request $request)
