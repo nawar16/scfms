@@ -11,7 +11,7 @@ class SettingController extends Controller
 {
     protected $version_name = "1.0";
     protected $version_code = 1;
-    protected $copyright_txt = "<p><span style='font-size: 8px;'>Powered by</span> <a href='https://syrianmonster.com' target='_blank' style='font-size: 8px;'>SyrianMonster</a></p>";
+    protected $copyright_txt = "<span style='font-size: 12px;'>B</span> <a href='https://syrianmonster.com' target='_blank'>SyrianMonster</a>";
     protected $copyright_link = "#";
     protected $facebook_url = "https://www.facebook.com/scfms.sy/";
     protected $instagram_url = "https://www.instagram.com/scfms.sy/";
